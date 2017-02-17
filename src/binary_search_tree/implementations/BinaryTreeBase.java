@@ -16,6 +16,10 @@ public abstract class BinaryTreeBase<E extends Comparable<E>> implements
 	public abstract BinaryTree<E> makeBinaryTree(E[] sourceElements);
 
 	public abstract void addElement(E elementToAdd,BinaryTreeNode<E> rootNode);
+	
+	/**
+	 * Default implementation with recursion
+	 */
 
 	@Override
 	public void inOrderTreeWalk(BinaryTreeNode<E> rootNode) {

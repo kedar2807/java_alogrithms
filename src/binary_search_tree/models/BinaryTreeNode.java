@@ -1,6 +1,6 @@
 package binary_search_tree.models;
 
-public class BinaryTreeNode<E extends Comparable<E>>{
+public class BinaryTreeNode<E extends Comparable<E>> {
 
 	private BinaryTreeNode<E> parent;
 	private BinaryTreeNode<E> left;
@@ -43,5 +43,30 @@ public class BinaryTreeNode<E extends Comparable<E>>{
 		this.key = key;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((key == null) ? 0 : key.hashCode());
+		result = prime * result + ((left == null) ? 0 : left.hashCode());
+		result = prime * result + ((parent == null) ? 0 : parent.hashCode());
+		result = prime * result + ((right == null) ? 0 : right.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BinaryTreeNode other = (BinaryTreeNode) obj;
+		if (key != null && other.key != null && key.equals(other.getKey())) {
+			return true;
+		}
+		return false;
+	}
 
 }

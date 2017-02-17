@@ -1,5 +1,9 @@
 package binary_search_tree.implementations.unbalanced;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 import binary_search_tree.implementations.BinaryTreeBase;
 import binary_search_tree.models.BinaryTree;
 import binary_search_tree.models.BinaryTreeNode;
@@ -58,6 +62,36 @@ public class UnbalancedBinaryTree<E extends Comparable<E>> extends
 		BinaryTreeNode<E> binaryTreeNodeToAdd = new BinaryTreeNode<>(
 				elementToAdd);
 		traverseTreeAndSetElements(rootNode, binaryTreeNodeToAdd);
+	}
+
+	/**
+	 * in-order tree walk without recursion
+	 */
+	@Override
+	public void inOrderTreeWalk(BinaryTreeNode<E> rootNode) {
+		Stack<BinaryTreeNode<E>> elementStack = new Stack<>();
+		List<E> traversedElements = new ArrayList<>();
+		BinaryTreeNode<E> previousNode = pushElementsToStack(rootNode,
+				elementStack);
+
+		while (previousNode == null && !elementStack.isEmpty()) {
+			BinaryTreeNode<E> popedNode = elementStack.pop();
+			traversedElements.add(popedNode.getKey());
+			previousNode = popedNode.getRight();
+			previousNode = pushElementsToStack(previousNode, elementStack);
+
+		}
+		System.out.println(traversedElements.toString());
+
+	}
+
+	private BinaryTreeNode<E> pushElementsToStack(BinaryTreeNode<E> nodeToPush,
+			Stack<BinaryTreeNode<E>> stack) {
+		while (nodeToPush != null) {
+			stack.push(nodeToPush);
+			nodeToPush = nodeToPush.getLeft();
+		}
+		return nodeToPush;
 	}
 
 }
