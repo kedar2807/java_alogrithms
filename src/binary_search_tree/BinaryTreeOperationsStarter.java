@@ -17,7 +17,7 @@ public class BinaryTreeOperationsStarter {
 	public static void main(String[] args) {
 		IBinaryTreeOperations<Integer> binaryOperations = new UnbalancedBinaryTree<>();
 		int numberToFind = 10;
-		Integer[] numbersToAddInBinary = { 5, 3, 4, 6, 2, 10, 10 };
+		Integer[] numbersToAddInBinary = { 5, 3, 4, 6, 2, 10 };
 		BinaryTree<Integer> binaryTree = binaryOperations
 				.makeBinaryTree(numbersToAddInBinary);
 		binaryOperations.inOrderTreeWalk(binaryTree.getRootNode());

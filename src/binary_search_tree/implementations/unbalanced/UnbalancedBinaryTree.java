@@ -77,8 +77,8 @@ public class UnbalancedBinaryTree<E extends Comparable<E>> extends
 		while (previousNode == null && !elementStack.isEmpty()) {
 			BinaryTreeNode<E> popedNode = elementStack.pop();
 			traversedElements.add(popedNode.getKey());
-			previousNode = popedNode.getRight();
-			previousNode = pushElementsToStack(previousNode, elementStack);
+			previousNode = pushElementsToStack(popedNode.getRight(),
+					elementStack);
 
 		}
 		System.out.println(traversedElements.toString());
